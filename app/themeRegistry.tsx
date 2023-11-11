@@ -21,6 +21,66 @@ declare module '@mui/material/styles' {
     }
 }
 let theme = createTheme({
+    typography: {
+        fontFamily: 'Inter',
+        fontSize: 17,
+        fontWeightLight: 400,
+        fontWeightRegular: 500,
+        fontWeightMedium: 600,
+        fontWeightBold: 700,
+        h1: {
+            fontSize: '2.5rem',
+            fontWeight: 600,
+        },
+        h2: {
+            fontSize: '2rem',
+            fontWeight: 600,
+        },
+        h3: {
+            fontSize: '1.75rem',
+            fontWeight: 600,
+        },
+        h4: {
+            fontSize: '1.5rem',
+            fontWeight: 600,
+        },
+        h5: {
+            fontSize: '15px',
+            fontWeight: 600,
+        },
+        h6: {
+            fontSize: '1rem',
+            fontWeight: 600,
+        },
+        subtitle1: {
+            fontSize: '1rem',
+            fontWeight: 500,
+        },
+        subtitle2: {
+            fontSize: '0.875rem',
+            fontWeight: 500,
+        },
+        body1: {
+            fontSize: '1rem',
+            fontWeight: 400,
+        },
+        body2: {
+            fontSize: '0.875rem',
+            fontWeight: 400,
+        },
+        button: {
+            fontSize: '0.35rem',
+            fontWeight: 600,
+        },
+        caption: {
+            fontSize: '0.75rem',
+            fontWeight: 400,
+        },
+        overline: {
+            fontSize: '0.75rem',
+            fontWeight: 600,
+        },
+    },
     palette: {
         green: {
             main: '#00C853',

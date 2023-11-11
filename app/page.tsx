@@ -1,7 +1,7 @@
 "use client";
 import CustomInput from '@/components/CustomInput';
 import InvestmentType from '@/components/InvestmentType';
-import { Box } from '@mui/material';
+import { Box, CssBaseline } from '@mui/material';
 import { useState } from 'react';
 
 export default function Page() {
@@ -16,8 +16,12 @@ export default function Page() {
   };
 
   return (
-    <InvestmentType type={type} handleChange={handleChange} />
-    // <CustomInput />
+    <div>
+      <InvestmentType type={type} handleChange={handleChange} title='Investment Type' />
+      <hr />
+      <hr />
+      <CustomInput />
+    </div>
     // <Box sx={{
     //   padding: '20px',
     //   backgroundColor: 'gray.light',

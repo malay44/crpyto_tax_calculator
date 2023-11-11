@@ -2,7 +2,7 @@ import * as React from 'react';
 import InputBase from '@mui/material/InputBase';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import { InputAdornment } from '@mui/material';
+import { InputAdornment, Typography } from '@mui/material';
 
 
 const BootstrapInputStyle = {
@@ -10,7 +10,7 @@ const BootstrapInputStyle = {
         marginTop: 3,
     },
     '& .MuiTypography-root': {
-        font: '500 17px/24px Inter',
+        font: 'inherit',
         color: 'gray.main',
     },
     '& .MuiInputBase-input': {
@@ -21,7 +21,12 @@ const BootstrapInputStyle = {
     backgroundColor: 'gray.light',
     border: '1px transparent solid',
     borderColor: '#fffff',
-    font: '500 17px/24px Inter',
+    fontWeight: 500,
+    fontSize: {
+        lg: '1.1rem',
+        md: '1rem',
+        sm: '0.9rem',
+    },
     color: 'gray.main',
     width: 'auto',
     padding: '17px 16px',
@@ -37,13 +42,13 @@ const BootstrapInputStyle = {
 export default function CustomizedInputsStyled() {
     return (
         <FormControl fullWidth variant="standard">
-            <InputLabel sx={{
-                font: '400 20px Inter',
-                color: 'gray.main',
-            }} shrink htmlFor="bootstrap-input">
-                Bootstrap
-            </InputLabel>
-            <InputBase sx={BootstrapInputStyle} defaultValue="react-bootstrap" id="bootstrap-input" startAdornment={<InputAdornment position="start">$</InputAdornment>} />
+            <Typography variant="h5" fontWeight={400} color="gray.main">Bootstrap</Typography>
+            <InputBase
+                sx={BootstrapInputStyle}
+                defaultValue="react-bootstrap"
+                id="bootstrap-input"
+                startAdornment={<InputAdornment position="start">$</InputAdornment>}
+            />
         </FormControl>
     );
 }
