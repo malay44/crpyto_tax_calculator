@@ -26,6 +26,7 @@ const BootstrapInputStyle = {
         lg: '1.1rem',
         md: '1rem',
         sm: '0.9rem',
+        xs: '0.85rem'
     },
     color: 'gray.main',
     width: 'auto',

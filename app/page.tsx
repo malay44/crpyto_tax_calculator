@@ -1,8 +1,9 @@
 "use client";
 import CustomInput from '@/components/CustomInput';
 import InvestmentType from '@/components/InvestmentType';
-import { Box, CssBaseline } from '@mui/material';
-import { useState } from 'react';
+import { Box, CssBaseline, SelectChangeEvent } from '@mui/material';
+import React, { useState } from 'react';
+import DropDown from '@/components/DropDown';
 
 export default function Page() {
   const [type, setType] = useState('Short Term');
@@ -15,12 +16,27 @@ export default function Page() {
     }
   };
 
+  interface optionType {
+    code?: string;
+    label: string;
+  }
+  const countries: optionType[] = [
+    { code: 'GB', label: 'United Kingdom' },
+    { code: 'AU', label: 'Australia' },
+  ];
+  const [option, setOption] = React.useState('');
+
+  const handleOptionChange = (event: SelectChangeEvent) => {
+    setOption(event.target.value);
+  };
+
   return (
     <div>
       <InvestmentType type={type} handleChange={handleChange} title='Investment Type' />
       <hr />
       <hr />
       <CustomInput />
+      <DropDown title='Country' handleChange={handleOptionChange} options={countries} val={option}  />
     </div>
     // <Box sx={{
     //   padding: '20px',
