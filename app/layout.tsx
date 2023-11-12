@@ -14,7 +14,7 @@ export default function RootLayout(props: any) {
   const { children } = props;
   return (
     <html lang="en">
-      <body>
+      <body style={{backgroundColor: '#EFF2F5'}}>
         <ThemeRegistry options={{ key: 'mui' }}>{children}</ThemeRegistry>
       </body>
     </html>

@@ -30,7 +30,7 @@ const BootstrapInputStyle = {
     },
     color: 'gray.main',
     width: 'auto',
-    padding: '17px 16px',
+    padding: '13px 16px',
     transition: 'all 0.2s ease',
     // Use the system font instead of the default Roboto font.
     '&:focus-within': {

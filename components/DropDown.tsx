@@ -44,24 +44,25 @@ export default function SelectLabels({ title, options, val, handleChange }: Sele
         },
         color: 'gray.main',
         width: 'auto',
+        minWidth: 'inherit',
         padding: '12px 16px',
         transition: 'all 0.2s ease',
     }
 
     return (
-        <FormControl sx={{ minWidth: 180, flexDirection: {sm: 'row'}, width: '100%', alignItems: {sm: 'center'}, gap: 1 }}>
+        <FormControl sx={{ flexDirection: {sm: 'row'}, width: '100%', alignItems: {sm: 'center'}, gap: 1 }}>
             <Typography variant="h5" fontWeight={400} color="gray.main">{title}</Typography>
             <Select
+                id='simple-select'
                 value={val}
                 onChange={handleChange}
-                disableUnderline
                 displayEmpty
                 inputProps={{ 'aria-label': 'Without label' }}
-                sx={{ 'img': { mr: 2}, 'fieldset':{border: 'none'}, flexGrow: 1, alignItems: 'center', ...customStyle }}
+                sx={{ 'img': { mr: 2}, 'fieldset':{border: 'none'}, flex: 1, alignItems: 'center', ...customStyle }}
             >
                 {
                     options.map((option) => (
-                        <MenuItem disableRipple key={option.code} value={option.label} sx={{ 'img': { mr: 2, flexShrink: 0 }, alignItems: 'center' }}>
+                        <MenuItem disableRipple key={option.label} value={option.label} sx={{ 'img': { mr: 2, flexShrink: 0 }, alignItems: 'center' }}>
                             {option.code && <Image
                                 loading="lazy"
                                 width={20}
