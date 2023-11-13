@@ -1,13 +1,18 @@
 "use client";
 import CustomInput from '@/components/CustomInput';
 import InvestmentType from '@/components/InvestmentType';
-import { Box, Divider, SelectChangeEvent, Typography } from '@mui/material';
+import { Box, Button, Divider, Hidden, SelectChangeEvent, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import DropDown from '@/components/DropDown';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import ResultBox from '@/components/ResultBox';
 import { Inter } from 'next/font/google'
+import Image from 'next/image';
+import advertImage from '@/public/Frame.png';
+import { ArrowBack, ArrowForwardIos, ArrowForwardRounded, East } from '@mui/icons-material';
+
 const inter = Inter({ subsets: ['latin'] })
+
 
 export default function Page() {
 
@@ -51,10 +56,10 @@ export default function Page() {
     expenses: '',
   });
   const [Output, setOutput] = useState({
-    capitalGain: '', //Capital gains amount
-    longTermGainDiscount: '', //Discount for long term gains
-    taxableCapitalGain: '', //Net Capital gains tax amount
-    taxToBepayed: '', //The tax you need to pay
+    capitalGain: '0', //Capital gains amount
+    longTermGainDiscount: '0', //Discount for long term gains
+    taxableCapitalGain: '0', //Net Capital gains tax amount
+    taxToBepayed: '0', //The tax you need to pay
   });
 
   const handleChange = (
@@ -129,11 +134,12 @@ export default function Page() {
       const taxToBePaid = netCapitalGains * taxRate;
 
       // Update the Output state
+      // if nan then replace with 0
       setOutput({
-        capitalGain: capitalGainsAmount.toFixed(2),
-        longTermGainDiscount: discountForLongTermGains.toFixed(2),
-        taxableCapitalGain: netCapitalGains.toFixed(2),
-        taxToBepayed: taxToBePaid.toFixed(2),
+        capitalGain: isNaN(capitalGainsAmount) ? '0' : capitalGainsAmount.toString(),
+        longTermGainDiscount: isNaN(discountForLongTermGains) ? '0' : discountForLongTermGains.toString(),
+        taxableCapitalGain: isNaN(netCapitalGains) ? '0' : netCapitalGains.toString(),
+        taxToBepayed: isNaN(taxToBePaid) ? '0' : taxToBePaid.toString(),
       });
     };
 
@@ -146,7 +152,8 @@ export default function Page() {
       className={inter.className}
       sx={{
         width: '100%',
-        height: '100%',
+        height: '100vh',
+        overflow: 'scroll',
         backgroundColor: { md: 'gray.light', sm: 'white' },
         display: 'flex',
         flexDirection: 'column',
@@ -200,7 +207,15 @@ export default function Page() {
                 <>
                   <Grid2 xs={12} sm={6} display={'flex'} flexDirection={{ sm: 'column' }} justifyContent={{ sm: 'flex-end' }} marginTop={'-10px'}>
                     <Typography variant="body2" fontWeight={400} color="gray.main" marginBottom={'5px'}>Tax Rate:  </Typography>
-                    <Typography variant="body2" fontWeight={400} color="gray.main" marginBottom={'5px'}>$ 5,902 + 32.5% of excess over $45,001 </Typography>
+                    <Typography variant="body2" fontWeight={400} color="gray.main" marginBottom={'5px'}>
+                      {
+                        incomeOption === '$0 - $18,200' ? '0%' :
+                          incomeOption === '$18,201 - $45,000' ? 'Nil + 19% of excess over $18,200' :
+                            incomeOption === '$45,001 - $120,000' ? '$5,092 + 32.5% of excess over $45,000' :
+                              incomeOption === '$120,001 - $180,000' ? '$29,467 + 37% of excess over $120,000' :
+                                incomeOption === '$180,001+' ? '$51,667 + 45% of excess over $180,000' : '0%'
+                      }
+                    </Typography>
                   </Grid2>
                   {investmentType === 'Long Term' &&
                     <>
@@ -228,11 +243,58 @@ export default function Page() {
             borderRadius: 8,
             aspectRatio: { md: '0.8', xs: '2' },
             backgroundColor: 'blue.main',
-            width: '100%',
             display: 'flex',
+            flexDirection: 'column',
+            gap: '2rem',
             justifyContent: 'center',
             alignItems: 'center',
-          }}></Box>
+            padding: {
+              xs: '2rem 1rem',
+              sm: '2rem 1rem',
+              md: '4rem 2rem',
+            },
+          }}>
+            <Hidden mdDown>
+            <Box sx={{ // advert box text
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
+              textAlign: 'center',
+            }}>
+              <Typography variant='h3' fontWeight={700} color="white" textAlign='center'>Get Started with KoinX for FREE</Typography>
+              <Typography variant='h5' fontWeight={400} color="white" textAlign='center'>With our range of features that you can equip for free, KoinX allows you to be more educated and aware of your tax reports.</Typography>
+            </Box>
+            </Hidden>
+            <Image src={advertImage} alt='illustration' width={200} height={200} />
+            <Hidden mdUp>
+            <Box sx={{ // advert box text
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
+              textAlign: 'center',
+            }}>
+              <Typography variant='h3' fontWeight={700} color="white" textAlign='center'>Track your portfolio & taxes</Typography>
+              <Typography variant='h5' fontWeight={400} color="white" textAlign='center'>With our range of features that you can equip for free, KoinX allows you to be more educated and aware of your tax reports.</Typography>
+            </Box>
+            </Hidden>
+            <Button 
+              variant="contained" 
+              disableTouchRipple 
+              disableRipple 
+              sx={{ 
+                backgroundColor: 'white', 
+                color: 'gray.dark', 
+                fontWeight: 600, 
+                fontSize: '0.9rem', 
+                padding: '0.5rem 1rem',
+                '&:hover': {
+                  backgroundColor: 'white', 
+                  color: 'gray.dark', 
+                },
+              }}>
+                {window.innerWidth < 900 ? 'Sign up at KoinX for free' : 'Get Started for free'} <East fontSize='small'/>
+              </Button>
+          </Box>
         </Grid2>
       </Grid2>
     </Box>
