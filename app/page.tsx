@@ -9,7 +9,9 @@ import ResultBox from '@/components/ResultBox';
 import { Inter } from 'next/font/google'
 import Image from 'next/image';
 import advertImage from '@/public/Frame.png';
-import { ArrowBack, ArrowForwardIos, ArrowForwardRounded, East } from '@mui/icons-material';
+import { East } from '@mui/icons-material';
+import FAQ from '@/components/FAQ';
+import Advert from '@/components/advert';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -294,130 +296,14 @@ export default function Page() {
         </Grid2>
         <Grid2 xs={4}>
           {useMediaQuery('(min-width:900px)') && 
-          <Box sx={{ // advert box for big screen
-            borderRadius: 8,
-            aspectRatio: { md: '0.8', xs: '2' },
-            backgroundColor: 'blue.main',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '2rem',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: {
-              xs: '2rem 1rem',
-              sm: '2rem 1rem',
-              md: '4rem 2rem',
-            },
-          }}>
-            <Hidden mdDown>
-            <Box sx={{ // advert box text
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '1rem',
-              textAlign: 'center',
-            }}>
-              <Typography variant='h3' fontWeight={700} color="white" textAlign='center'>Get Started with KoinX for FREE</Typography>
-              <Typography variant='h5' fontWeight={400} color="white" textAlign='center'>With our range of features that you can equip for free, KoinX allows you to be more educated and aware of your tax reports.</Typography>
-            </Box>
-            </Hidden>
-            <Image src={advertImage} alt='illustration' width={200} height={200} />
-            <Hidden mdUp>
-            <Box sx={{ // advert box text
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '1rem',
-              textAlign: 'center',
-            }}>
-              <Typography variant='h3' fontWeight={700} color="white" textAlign='center'>Track your portfolio & taxes</Typography>
-              <Typography variant='h5' fontWeight={400} color="white" textAlign='center'>With our range of features that you can equip for free, KoinX allows you to be more educated and aware of your tax reports.</Typography>
-            </Box>
-            </Hidden>
-            <Button 
-              variant="contained" 
-              disableTouchRipple 
-              disableRipple 
-              sx={{ 
-                backgroundColor: 'white', 
-                color: 'gray.dark', 
-                fontWeight: 600, 
-                fontSize: '0.9rem', 
-                padding: '0.5rem 1rem',
-                '&:hover': {
-                  backgroundColor: 'white', 
-                  color: 'gray.dark', 
-                },
-              }}>
-                Get Started for free 
-                <East fontSize='small'/>
-              </Button>
-          </Box>}
+          <Advert windowSize='big'/>}
         </Grid2>
         <Grid2 xs={12} md={8}>
-          <Box sx={{ // faq section
-            borderRadius: 8,
-            padding: '5%',
-            backgroundColor: 'white',
-            border: { xs: '2px solid', md: 'none' },
-            borderColor: { xs: 'gray.A100' },
-          }}>
-            <Typography variant='h3' sx={{ fontWeight: 'bold', textAlign: 'left', marginBottom: '35px' }}>Frequently Asked Questions</Typography> {/* title */}
-            <Grid2 container rowSpacing={{ xs: '20px', sm: '28px' }} columnSpacing={'40px'}> {/* input boxes */}
-              {// if screen size is small then show only 2 question
-              faqQuestions.slice(0, useMediaQuery('(max-width:900px)') ? 2 : faqQuestions.length).map((question, index) => (
-                <Grid2 xs={12} key={index}>
-                  <Typography variant='h4' fontWeight={700} color="#0B1426" marginBottom={'5px'}>{question}</Typography>
-                  <Typography variant='body1' fontWeight={400} color="gray.main" marginBottom={'5px'}>{faqAnswers[index]}</Typography>
-                </Grid2>
-              ))}
-            </Grid2>
-          </Box>
+          <FAQ />
         </Grid2>
         <Grid2 xs={12}>
           {useMediaQuery('(max-width:900px)') &&
-          <Box sx={{ // advert for small screen
-            borderRadius: 8,
-            aspectRatio: { md: '0.8', xs: '2' },
-            backgroundColor: 'blue.main',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '2rem',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: {
-              xs: '2rem 1rem',
-              sm: '2rem 1rem',
-              md: '4rem 2rem',
-            },
-          }}>
-            <Image src={advertImage} alt='illustration' width={200} height={200} />
-            <Box sx={{ // advert box text
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '1rem',
-              textAlign: 'center',
-            }}>
-              <Typography variant='h3' fontWeight={700} color="white" textAlign='center'>Track your portfolio & taxes</Typography>
-              <Typography variant='h5' fontWeight={400} color="white" textAlign='center'>With our range of features that you can equip for free, KoinX allows you to be more educated and aware of your tax reports.</Typography>
-            </Box>
-            <Button 
-              variant="contained" 
-              disableTouchRipple 
-              disableRipple 
-              sx={{ 
-                backgroundColor: 'white', 
-                color: 'gray.dark', 
-                fontWeight: 600, 
-                fontSize: '0.9rem', 
-                padding: '0.5rem 1rem',
-                '&:hover': {
-                  backgroundColor: 'white', 
-                  color: 'gray.dark', 
-                },
-              }}>
-                Get Started for free 
-                <East fontSize='small'/>
-              </Button>
-          </Box>}
+            <Advert windowSize='small' />}
         </Grid2>
       </Grid2>
     </Box>
