@@ -6,6 +6,8 @@ import React, { useEffect, useState } from 'react';
 import DropDown from '@/components/DropDown';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import ResultBox from '@/components/ResultBox';
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'] })
 
 export default function Page() {
 
@@ -18,7 +20,7 @@ export default function Page() {
     // { code: 'GB', label: 'United Kingdom' },
     { code: 'AU', label: 'Australia' },
   ];
-  const FinancialYear: optionType[] = [{label: 'FY 2023-24'}];
+  const FinancialYear: optionType[] = [{ label: 'FY 2023-24' }];
 
   const dynamicYear = () => {
     let date = new Date();
@@ -87,7 +89,7 @@ export default function Page() {
   useEffect(() => {
     const calculateTax = () => {
       let taxRate = 0;
-  
+
       switch (incomeOption) {
         case '$0 - $18,200':
           taxRate = 0;
@@ -107,25 +109,25 @@ export default function Page() {
         default:
           break;
       }
-  
+
       // Convert input values to numbers
       const purchasePrice = parseFloat(inputValues.purchasePrice);
       const salePrice = parseFloat(inputValues.salePrice);
       const expenses = parseFloat(inputValues.expenses);
       const capitalGainsAmount = salePrice - purchasePrice - expenses;
-  
+
       let discountForLongTermGains = 0;
       if (investmentType === 'Long Term' && capitalGainsAmount > 0) {
         discountForLongTermGains = 0.5 * capitalGainsAmount;
       }
-  
+
       const netCapitalGains =
         investmentType === 'Long Term'
           ? capitalGainsAmount - discountForLongTermGains
           : capitalGainsAmount;
-  
+
       const taxToBePaid = netCapitalGains * taxRate;
-  
+
       // Update the Output state
       setOutput({
         capitalGain: capitalGainsAmount.toFixed(2),
@@ -140,14 +142,16 @@ export default function Page() {
 
 
   return (
-    <Box sx={{
-      width: '100%',
-      height: '100%',
-      backgroundColor: { md: 'gray.light', sm: 'white' },
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    }}>
+    <Box
+      className={inter.className}
+      sx={{
+        width: '100%',
+        height: '100%',
+        backgroundColor: { md: 'gray.light', sm: 'white' },
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}>
       <Grid2 container spacing={2} padding={2} width={'100%'} maxWidth={'1330px'} >
         <Grid2 xs={12} md={8}>
           <Box sx={{ // left side box

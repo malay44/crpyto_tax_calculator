@@ -22,7 +22,6 @@ declare module '@mui/material/styles' {
 }
 let theme = createTheme({
     typography: {
-        fontFamily: 'Inter',
         fontSize: 17,
         fontWeightLight: 400,
         fontWeightRegular: 500,
