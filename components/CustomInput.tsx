@@ -4,7 +4,6 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import { InputAdornment, Typography } from '@mui/material';
 
-
 const BootstrapInputStyle = {
     'label + &': {
         marginTop: 3,
@@ -15,6 +14,8 @@ const BootstrapInputStyle = {
     },
     '& .MuiInputBase-input': {
         padding: 0,
+        color: 'gray.main',
+        WebkitTextFillColor: 'unset!important',
     },
     borderRadius: '8px',
     // position: 'relative',
@@ -25,12 +26,13 @@ const BootstrapInputStyle = {
     fontSize: {
         lg: '1.1rem',
         md: '1rem',
-        sm: '0.9rem',
-        xs: '0.85rem'
+        sm: '1rem',
+        xs: '0.9rem'
     },
     color: 'gray.main',
     width: 'auto',
     padding: '13px 16px',
+    marginTop: '5px',
     transition: 'all 0.2s ease',
     // Use the system font instead of the default Roboto font.
     '&:focus-within': {
@@ -39,16 +41,24 @@ const BootstrapInputStyle = {
     },
 };
 
+interface CustomizedInputsProps {
+    title?: string;
+    val: string;
+    disabled?: boolean;
+    handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-export default function CustomizedInputsStyled() {
+export default function CustomizedInputs({ title, val, disabled, handleChange }: CustomizedInputsProps) {
     return (
-        <FormControl fullWidth variant="standard">
-            <Typography variant="h5" fontWeight={400} color="gray.main">Bootstrap</Typography>
+        <FormControl fullWidth disabled={disabled} variant="standard">
+            <Typography variant="h5" fontWeight={400} color="gray.main">{title}</Typography>
             <InputBase
+                type='number'
                 sx={BootstrapInputStyle}
-                defaultValue="react-bootstrap"
+                value={val}
+                onChange={handleChange}
                 id="bootstrap-input"
-                startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                startAdornment={<InputAdornment className='hehe' position="start">$</InputAdornment>}
             />
         </FormControl>
     );

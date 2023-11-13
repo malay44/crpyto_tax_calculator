@@ -89,11 +89,13 @@ let theme = createTheme({
         },
         blue: {
             main: '#0052FE', // investment type select background
+            light: '#EBF2FF', // investment type select background
             dark: '#0141CF', // tax payable background and text
         },
         gray: {
             main: '#3E424A', // gray/2
             dark: '#0F1629', // gray/1
+            A100: '#DEE1E6', // gray/3
             light: '#EFF2F5', // input background
         },
     },

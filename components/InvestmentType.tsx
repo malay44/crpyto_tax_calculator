@@ -3,7 +3,7 @@ import * as React from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import CheckIcon from '@mui/icons-material/Check';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 type InvestmentTypeProps = {
     title?: string;
@@ -16,6 +16,7 @@ export default function ColorToggleButton({ type, handleChange, title }: Investm
     const customStyle = {
         gap: '1rem',
         width: '100%',
+        marginTop: '5px',
         '& .MuiToggleButton-root': {
             borderRadius: '8px!important',
             borderLeft: '2px solid !important',
@@ -33,15 +34,6 @@ export default function ColorToggleButton({ type, handleChange, title }: Investm
             color: 'gray.main',
             padding: '10px 16px',
             transition: 'all 0.2s ease',
-            "::before": {
-                // display text under button 
-                content: 'attr(data-custom-attribute)',
-                position: 'absolute',
-                top: 'calc(100% + 5px)',
-                fontSize: '0.75rem',
-                color: 'gray.main',
-
-            },
             '&:focus-within.Mui-selected': {
                 color: 'blue.main',
                 backgroundColor: '#0052FE0F',
@@ -51,7 +43,7 @@ export default function ColorToggleButton({ type, handleChange, title }: Investm
     };
 
     return (
-        <div>
+        <Box>
             <Typography variant='h5' fontWeight={400} color="initial">
                 {title}
             </Typography>
@@ -63,14 +55,14 @@ export default function ColorToggleButton({ type, handleChange, title }: Investm
                 aria-label="Platform"
                 sx={customStyle}
             >
-                <ToggleButton disableRipple value="Short Term" data-custom-attribute="< 12 months">
+                <ToggleButton disableRipple value="Short Term">
                     Short Term
                     <CheckIcon sx={{
                         color: (type === 'Short Term') ? 'blue.main' : 'white',
                         marginLeft: '0.5rem',
                     }} />
                 </ToggleButton>
-                <ToggleButton disableRipple value="Long Term" data-custom-attribute="> 12 months">
+                <ToggleButton disableRipple value="Long Term">
                     Long Term
                     <CheckIcon sx={{
                         color: (type === 'Long Term') ? 'blue.main' : 'white',
@@ -78,6 +70,6 @@ export default function ColorToggleButton({ type, handleChange, title }: Investm
                     }} />
                 </ToggleButton>
             </ToggleButtonGroup>
-        </div>
+        </Box>
     );
 }

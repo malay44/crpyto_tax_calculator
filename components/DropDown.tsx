@@ -51,7 +51,7 @@ export default function SelectLabels({ title, options, val, handleChange }: Sele
 
     return (
         <FormControl sx={{ flexDirection: {sm: 'row'}, width: '100%', alignItems: {sm: 'center'}, gap: 1 }}>
-            <Typography variant="h5" fontWeight={400} color="gray.main">{title}</Typography>
+            {title && <Typography variant="h5" fontWeight={400} color="gray.main">{title}</Typography>}
             <Select
                 id='simple-select'
                 value={val}
