@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import ThemeRegistry from './themeRegistry'
+import Navbar from '@/components/Navbar'
 
 export const metadata: Metadata = {
   title: 'Crypto Tax Calculator App',
@@ -10,9 +11,12 @@ export default function RootLayout(props: any) {
   const { children } = props;
   return (
     <html lang="en">
-      <body>
-        <ThemeRegistry options={{ key: 'mui' }}>{children}</ThemeRegistry>
-      </body>
+      <ThemeRegistry options={{ key: 'mui' }}>
+        <body>
+          <Navbar />
+          {children}
+        </body>
+      </ThemeRegistry>
     </html>
   );
 }
