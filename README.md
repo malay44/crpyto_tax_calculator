@@ -6,7 +6,7 @@
 - Dynamic FAQ section.
 - Utilizes Server-Side Rendering (SSR).
 
-# Improvements
+# Possible Improvements
 
 - Implement markdown for generating the FAQ section.
 - Add a signIn button to the navigation bar.
