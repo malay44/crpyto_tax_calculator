@@ -1,7 +1,7 @@
 "use client";
 import CustomInput from '@/components/CustomInput';
 import InvestmentType from '@/components/InvestmentType';
-import { Box, Button, Divider, Hidden, SelectChangeEvent, Typography } from '@mui/material';
+import { Box, Button, Divider, Hidden, SelectChangeEvent, Typography, useMediaQuery } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import DropDown from '@/components/DropDown';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
@@ -145,7 +145,6 @@ export default function Page() {
 
     calculateTax();
   }, [investmentType, incomeOption, inputValues]);
-
 
   return (
     <Box
@@ -292,7 +291,7 @@ export default function Page() {
                   color: 'gray.dark', 
                 },
               }}>
-                {window.innerWidth < 900 ? 'Sign up at KoinX for free' : 'Get Started for free'} <East fontSize='small'/>
+                { useMediaQuery('(max-width:900px)') ? 'Sign up at KoinX for free' : 'Get Started for free'} <East fontSize='small'/>
               </Button>
           </Box>
         </Grid2>
