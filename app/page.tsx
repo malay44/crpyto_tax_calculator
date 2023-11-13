@@ -1,17 +1,14 @@
 "use client";
 import CustomInput from '@/components/CustomInput';
 import InvestmentType from '@/components/InvestmentType';
-import { Box, Button, Divider, Hidden, SelectChangeEvent, Typography, useMediaQuery } from '@mui/material';
+import { Box, Divider, SelectChangeEvent, Typography, useMediaQuery } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import DropDown from '@/components/DropDown';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import ResultBox from '@/components/ResultBox';
 import { Inter } from 'next/font/google'
-import Image from 'next/image';
-import advertImage from '@/public/Frame.png';
-import { East } from '@mui/icons-material';
 import FAQ from '@/components/FAQ';
-import Advert from '@/components/advert';
+import Advert from '@/components/Advert';
 
 const inter = Inter({ subsets: ['latin'] })
 

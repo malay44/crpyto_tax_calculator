@@ -2,7 +2,7 @@ import { East } from '@mui/icons-material'
 import { Box, Button, Typography } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
-import advertImage from '../public/frame.png'
+import advertImage from '@/public/Advert_Image.png'
 
 type Props = {
     windowSize: string;
