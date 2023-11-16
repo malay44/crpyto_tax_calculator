@@ -5,6 +5,8 @@ type Props = {
     title: string;
     val: string;
     color: string;
+    currSymbole?: string;
+    loading?: boolean;
 }
 
 const customStyle = {
@@ -23,14 +25,14 @@ const customStyle = {
 }
 
 
-function ResultBox({title, val, color}: Props) {
+function ResultBox({title, val, color, currSymbole, loading}: Props) {
   return (
     <Box sx={{...customStyle, backgroundColor: color+'.light'}}>
         <Typography variant='h5' fontWeight={500} color="initial">
             {title}
         </Typography>
         <Typography variant='h3' color={color+'.dark'} fontWeight={700}>
-            {'$ ' + val}
+            {loading ? 'Loading..' :(currSymbole + ' ' + val)}
         </Typography>
     </Box>
   )

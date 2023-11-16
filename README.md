@@ -9,6 +9,7 @@
 # Possible Improvements
 
 - Implement markdown for generating the FAQ section.
+- displaying numbers with , for thousands separator.
 - Add a signIn button to the navigation bar.
 - Optimize bundle size by using `&&` instead of `?.`.
 

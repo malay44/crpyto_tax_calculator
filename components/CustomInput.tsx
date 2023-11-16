@@ -46,10 +46,11 @@ interface CustomizedInputsProps {
     val: string;
     disabled?: boolean;
     placeholder?: string;
+    country?: string;
     handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function CustomizedInputs({ title, val, disabled, handleChange, placeholder }: CustomizedInputsProps) {
+export default function CustomizedInputs({ title, val, disabled, handleChange, placeholder, country }: CustomizedInputsProps) {
     return (
         <FormControl fullWidth disabled={disabled} variant="standard">
             <Typography variant="h5" fontWeight={400} color="gray.main">{title}</Typography>
@@ -60,7 +61,7 @@ export default function CustomizedInputs({ title, val, disabled, handleChange, p
                 onChange={handleChange}
                 placeholder={placeholder}
                 id="bootstrap-input"
-                startAdornment={<InputAdornment className='hehe' position="start">$</InputAdornment>}
+                startAdornment={<InputAdornment className='hehe' position="start">{country === 'Australia' ? '$' : '₹'}</InputAdornment>}
             />
         </FormControl>
     );
